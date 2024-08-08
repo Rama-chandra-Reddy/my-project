@@ -201,74 +201,7 @@ public class CartServiceImpl implements CartService {
 	 }
 
 
-	 
-//	 @Override
-//	 public Cart saveCart(Long userId, CartRequestDto cartRequest) {
-//	     User user = userrepo.findById(userId)
-//	             .orElseThrow(() -> new RuntimeException("User not found"));
-//
-//	     // Check if there is already a cart for the user with an applied coupon
-//	     List<Cart> existingCarts = cartRepo.findByUser(user);
-//	     Cart existingCart = existingCarts.stream()
-//	             .filter(cart -> cart.getAppliedCouponCode() != null)
-//	             .findFirst()
-//	             .orElse(null);
-//
-//	     // Always create a new cart for the user
-//	     Cart cart = new Cart();
-//	     cart.setUser(user);
-//
-//	     double totalAmount = 0;
-//	     double discountAmount = 0;
-//	     double sgstAmount = 0;
-//	     double cgstAmount = 0;
-//	     double serviceTaxAmount = 0;
-//
-//	     for (CartItemDto itemDTO : cartRequest.getCartItems()) {
-//	         Dish dish = dishRepo.findById(itemDTO.getDishId())
-//	                 .orElseThrow(() -> new RuntimeException("Dish not found"));
-//
-//	         CartItem cartItem = new CartItem();
-//	         cartItem.setCart(cart);
-//	         cartItem.setDish(dish);
-//	         cartItem.setSubCategory(itemDTO.getSubCategory()); // Use the dish name from DTO
-//	         cartItem.setQuantity(itemDTO.getQuantity());
-//	         cartItem.setPrice(itemDTO.getPrice());
-//
-//	         cart.getList().add(cartItem);
-//
-//	         totalAmount += itemDTO.getPrice(); // Adding the All Prices
-//	     }
-//
-//	     // Apply discount if coupon code matches and no coupon has been applied yet
-//	     String couponCode = cartRequest.getCouponCode();
-//	     if (couponCode != null && couponCode.equals("DISCOUNT10")) {
-//	         if (existingCart == null) { // Check if no coupon has been applied yet
-//	             discountAmount = totalAmount * 0.10; // Assuming 10% discount
-//	             cart.setAppliedCouponCode(couponCode); // Store applied coupon code
-//	         }
-//	     }
-//
-//	     double finalAmount = totalAmount - discountAmount; // Final amount after discount
-//
-//	     // Calculate SGST, CGST, and Service Tax
-//	     sgstAmount = finalAmount * 0.09; // 9% SGST
-//	     cgstAmount = finalAmount * 0.09; // 9% CGST
-//	     serviceTaxAmount = finalAmount * 0.05; // 5% Service Tax
-//
-//	     double grandTotal = finalAmount + sgstAmount + cgstAmount + serviceTaxAmount;
-//
-//	     cart.setTotalAmount(totalAmount); // Set total amount in the cart
-//	     cart.setDiscountAmount(discountAmount); // Set discount amount
-//	     cart.setFinalAmount(finalAmount);   // Set final Amount after discount
-//	     cart.setGrandTotal(grandTotal);  // Set final amount after discount and tax
-//
-//	     cart.setSgstTotal(sgstAmount); // Set SGST amount
-//	     cart.setCgstTotal(cgstAmount); // Set CGST amount
-//	     cart.setServiceTaxTotal(serviceTaxAmount); // Set Service Tax amount
-//
-//	     return cartRepo.save(cart);
-//	 }
+	
 
 	 @Override
 	    public CartDto getLatestCartByUserId(Long userId) {
